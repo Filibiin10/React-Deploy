@@ -31,7 +31,7 @@ const SignUpForm = () => {
     
           });
           // Perform API call or any other backend operations here, e.g.:
-          const api = await axios.post('http://localhost:4000/api/register', form)
+          await axios.post('http://localhost:4000/api/register', form)
              .then(response => {
                  console.log(response);
              })
@@ -47,14 +47,7 @@ const SignUpForm = () => {
             confirmPassword: '',
           });
           // Reset form after successful submission
-          setForm({
-            username: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-          });
         }
-
     }
 
     const handleInput = (event : ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +57,7 @@ const SignUpForm = () => {
     } 
 
     const handleValidation = () => {
-        const { username,email,password, confirmPassword } = form;
+        const { username,password, confirmPassword } = form;
             
         if (password !== confirmPassword) {
             toast.error("Passwords do not match!", toastoptins);
